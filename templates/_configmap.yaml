@@ -1,0 +1,10 @@
+{{- define "whi-tw-helmcharts.library-chart.configmap.tpl" -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name | printf "%s-%s" .Chart.Name }}
+data: {}
+{{- end -}}
+{{- define "whi-tw-helmcharts.library-chart.configmap" -}}
+{{- include "whi-tw-helmcharts.library-chart.util.merge" (append . "whi-tw-helmcharts.library-chart.configmap.tpl") -}}
+{{- end -}}
